@@ -58,7 +58,7 @@ const HeaderButtons = () => {
   const { account, setAccount } = useContext(LoginContext);
   const keys = Object.keys(localStorage);
 
-  if (keys.length > 1) {
+  if (keys.length > 0) {
     setAccount(keys[0]);
   }
 
