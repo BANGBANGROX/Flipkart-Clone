@@ -3,6 +3,7 @@ const Connection = require("./database/db");
 const DefaultData = require("./default");
 const bodyPareser = require("body-parser");
 const cors = require("cors");
+const path = require("path");
 require("dotenv").config();
 const routes = require("./routes/routes");
 const { v4: uuid } = require("uuid");
@@ -23,6 +24,13 @@ app.listen(PORT, () => console.log(`Server running on port ${PORT}...`));
 
 // data to database
 DefaultData();
+
+if (process.env.NODE_ENV === "production") {
+  app.use("/", express.static("client/build"));
+  app.get("*", (request, response) => {
+    response.sendFile(path.resolve(__dirname, "client/build/index.html"));
+  });
+}
 
 let paytmMerchantKey = process.env.PAYTM_MERCHANT_KEY;
 
