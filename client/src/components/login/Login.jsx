@@ -153,7 +153,7 @@ const Login = ({ open, setOpen, setAccount }) => {
 
       handleClose();
       setAccount(login.username);
-      localStorage.setItem(login.username, login.password);
+      localStorage.setItem("user", login.username);
     } catch (err) {
       console.log(err.message);
     }

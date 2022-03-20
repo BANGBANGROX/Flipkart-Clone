@@ -56,10 +56,10 @@ const HeaderButtons = () => {
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const { account, setAccount } = useContext(LoginContext);
-  const keys = Object.keys(localStorage);
+  const user = JSON.parse(localStorage.getItem("user"));
 
-  if (keys.length > 0) {
-    setAccount(keys[0]);
+  if (user) {
+    setAccount(user);
   }
 
   const { cartItems } = useSelector((state) => state.cart);
