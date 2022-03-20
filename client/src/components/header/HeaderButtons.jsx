@@ -68,6 +68,8 @@ const HeaderButtons = () => {
     setOpen(true);
   };
 
+  console.log(account);
+
   return (
     <Box className={classes.wrapper}>
       {account ? (
